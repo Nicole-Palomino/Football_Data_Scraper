@@ -1,0 +1,68 @@
+# Entorno virtual
+env/
+venv/
+ENV/
+.env
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de Jupyter
+*.ipynb
+.ipynb_checkpoints/
+
+# Archivos de IDE y editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de registro y datos
+*.log
+*.csv
+*.dat
+*.out
+
+# Archivos de configuración local
+instance/
+.env.local
+.env.*.local
+
+# Archivos de caché
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Archivos de dependencias
+pip-log.txt
+pip-delete-this-directory.txt
+requirements.txt.bak
