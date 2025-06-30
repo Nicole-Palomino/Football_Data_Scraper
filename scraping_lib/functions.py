@@ -787,12 +787,20 @@ def get_possible_leagues(league, season, page):
                 "slug": "champions",
                 "seasons": None
             },
-            "Champions League": {
-                "slug": "champions",
+            "UEFA - Nations League A": {
+                "slug": "uefanaciones",
                 "seasons": None
             },
             "Primera Division Uruguay": {
                 "slug": "uruguay",
+                "seasons": None
+            },
+            "UEFA Europa League": {
+                "slug": "uefa",
+                "seasons": None
+            },
+            "CONMEBOL - Eliminatorias Mundial 2026": {
+                "slug": "eliminatorias",
                 "seasons": None
             }
         }

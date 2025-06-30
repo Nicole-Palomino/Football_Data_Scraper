@@ -8,7 +8,7 @@ from .functions import get_possible_leagues_for_page
 from .exceptions import InvalidStat, MatchDoesntHaveInfo
 
 class DataFactory:
-    
+        
     def __init__(self):
         self.possible_incidences = ['goals', 'substitutions', 'clearances', 'cornerKicks', 'correctPasses', 'fouls', 'incorrectPasses', 'offsides', 'redCards', 'shots', 'status', 'stealings', 'yellowCards', 'throwIn', 'goalkick', 'nutmegs', 'sombreroFlick', 'penaltyShootout', 'var']
 

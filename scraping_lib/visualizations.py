@@ -453,20 +453,20 @@ def get_information_horizontal(ax, equipos, cuerpo, color_home, color_away, home
     ax.text(.5, .3, f'{leagueName} - {leagueRoundName}', ha='center', va='center', fontproperties=cuerpo.prop, size=15)
     ax.text(.5, .1, f'{stadium_name}   Árbitro: {referee}', ha='center', va='center', fontproperties=cuerpo.prop, size=15)
 
-def get_jugador_destacado(ax, name_player, minutos_player, goals_player, xA_player, shots_player, regates_player, pases_tercio_player, faltas_player, role_player, toques_player, rating_player, duelos_ganados_player, pases_claves_player, nombre, cuerpo):
+def get_jugador_destacado(ax, name_player, minutos_player, goals_player, xA_player, shots_player, pases_tercio_player, faltas_player, role_player, toques_player, rating_player, posesiones_perdidas_player, pases_claves_player, nombre, cuerpo):
     ax.text(.23, .92, f'{name_player}', ha='left', va='center', fontproperties=nombre.prop, size=23)
-    ax.text(.05, .74, f"Minutos jugados: {minutos_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .74, f"Minutos Jugados: {minutos_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
     ax.text(.05, .67, f"Goles: {int(goals_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .6, f"Asistencias esperadas: {xA_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .53, f"Remates: {int(shots_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .46, f"Pases en el último tercio: {int(pases_tercio_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .39, f"Regates: {int(regates_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .6, f"Asistencias Esperadas: {xA_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .53, f"Remates: {shots_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .46, f"Pases en el Último Tercio: {pases_tercio_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .39, f"Faltas Cometidas: {int(faltas_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
     ax.text(.05, .32, f"Rol: {role_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .25, f"Toques: {int(toques_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .25, f"Toques: {toques_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
     ax.text(.05, .18, f"Rating: {rating_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .11, f"Remates al arco: {int(faltas_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, .04, f"Duelos ganados: {duelos_ganados_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
-    ax.text(.05, -.03, f"Pases claves: {pases_claves_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .11, f"Remates al Arco: {int(faltas_player)}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, .04, f"Posesiones Perdidas: {posesiones_perdidas_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
+    ax.text(.05, -.03, f"Pases Claves: {pases_claves_player}", ha='left', va='center', fontproperties=cuerpo.prop, size=16)
 
 def get_estadisticas_match(ax, cuerpo, xgs_match, ball_possession, corners_match, offsides_match, yellow_cards, pases_completados_match, homeColor, awayColor):
     if ball_possession[0] > ball_possession[1]:
@@ -654,3 +654,179 @@ def get_campo_tiros_horizontal(ax, coord_x_goal_home, coord_y_goal_home, coord_x
     pitch.scatter(coord_x_goal_away, coord_y_goal_away, s=300, edgecolors='black', ax=ax, marker='football')
     pitch.scatter(coord_x_nogoal_away, coord_y_nogoal_away, s=100,
                         edgecolors='black', ax=ax, color=f'{color_away}') 
+    
+def get_portero_destacado(ax, name_player, minutos_player, atajadas_player_match, goles_recibidos_player_match, pases_completos_player_match, pases_largos_player_match, toques_player_match, goles_esperados_al_arco_player_match, goles_evitados_player_match, posesiones_perdidas_player_match, despejes_player_match, recuperacion_de_posesion_player_match, nombre, cuerpo):
+    ax.text(.23, .92, f'{name_player}', ha='left', va='center', fontproperties=nombre.prop, size=23)
+    ax.text(.05, .74, f"Minutos jugados: {minutos_player}", ha='left', va='center', fontproperties=nombre.prop, size=16)
+    ax.text(.05, .67, f"Atajadas: {atajadas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .6, f"Goles recibidos: {goles_recibidos_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .53, f"Pases completados: {pases_completos_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .46, f"Pases largos: {pases_largos_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .39, f"Toques: {toques_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .32, f"Goles esperados al arco: {goles_esperados_al_arco_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .25, f"Goles evitados: {goles_evitados_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .18, f"Posesiones perdidas: {posesiones_perdidas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .11, f"Despejes: {despejes_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax.text(.05, .04, f"Recuperación de posesión: {recuperacion_de_posesion_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+
+def get_estadisticas_vertical_match(ax, cuerpo, xgs_match, ball_possession, corners_match, offsides_match, yellow_cards, pases_completados_match, grandes_chances, reamtes_match, remates_arco_match, red_card_match, paradas_match, homeColor, awayColor):
+    if ball_possession[0] > ball_possession[1]:
+        ax.text(.05, 1., f'{ball_possession[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, 1., f'Posesión', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, 1., f'{ball_possession[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif ball_possession[0] == ball_possession[1]:
+        ax.text(.05, 1., f'{ball_possession[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, 1., f'Posesión', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, 1., f'{ball_possession[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, 1., f'{ball_possession[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, 1., f'Posesión', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, 1., f'{ball_possession[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+
+    if xgs_match[0] > xgs_match[1]:
+        ax.text(.05, .9, f'{xgs_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .9, f'Goles Esperados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .9, f'{xgs_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif xgs_match[0] == xgs_match[1]:
+        ax.text(.05, .9, f'{xgs_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .9, f'Goles Esperados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .9, f'{xgs_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .9, f'{xgs_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .9, f'Goles Esperados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .9, f'{xgs_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+  
+    if corners_match[0] > corners_match[1]:
+        ax.text(.05, .8, f'{corners_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .8, f'Corners', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .8, f'{corners_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif corners_match[0] == corners_match[1]:
+        ax.text(.05, .8, f'{corners_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .8, f'Corners', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .8, f'{corners_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .8, f'{corners_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .8, f'Corners', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .8, f'{corners_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+
+    if offsides_match[0] > offsides_match[1]:
+        ax.text(.05, .7, f'{offsides_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .7, f'Offsides', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .7, f'{offsides_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif offsides_match[0] == offsides_match[1]:
+        ax.text(.05, .7, f'{offsides_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .7, f'Offsides', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .7, f'{offsides_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .7, f'{offsides_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .7, f'Offsides', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .7, f'{offsides_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+
+    if yellow_cards[0] > yellow_cards[1]:
+        ax.text(.05, .6, f'{yellow_cards[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .6, f'Tarjetas Amarillas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .6, f'{yellow_cards[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif yellow_cards[0] == yellow_cards[1]:
+        ax.text(.05, .6, f'{yellow_cards[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .6, f'Tarjetas Amarillas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .6, f'{yellow_cards[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .6, f'{yellow_cards[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .6, f'Tarjetas Amarillas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .6, f'{yellow_cards[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+        
+    if pases_completados_match[0] > pases_completados_match[1]:
+        ax.text(.05, .5, f'{pases_completados_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .5, f'Pases Completados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .5, f'{pases_completados_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif pases_completados_match[0] == pases_completados_match[1]:
+        ax.text(.05, .5, f'{pases_completados_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .5, f'Pases Completados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .5, f'{pases_completados_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .5, f'{pases_completados_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .5, f'Pases Completados', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .5, f'{pases_completados_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+
+    if grandes_chances[0] > grandes_chances[1]:
+        ax.text(.05, .4, f'{grandes_chances[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .4, f'Grandes Chances', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .4, f'{grandes_chances[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif grandes_chances[0] == grandes_chances[1]:
+        ax.text(.05, .4, f'{grandes_chances[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .4, f'Grandes Chances', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .4, f'{grandes_chances[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .4, f'{grandes_chances[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .4, f'Grandes Chances', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .4, f'{grandes_chances[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))
+
+    if reamtes_match[0] > reamtes_match[1]:
+        ax.text(.05, .3, f'{reamtes_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .3, f'Remates Totales', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .3, f'{reamtes_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif reamtes_match[0] == reamtes_match[1]:
+        ax.text(.05, .3, f'{reamtes_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .3, f'Remates Totales', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .3, f'{reamtes_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .3, f'{reamtes_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .3, f'Remates Totales', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .3, f'{reamtes_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))   
+
+    if remates_arco_match[0] > remates_arco_match[1]:
+        ax.text(.05, .2, f'{remates_arco_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .2, f'Remates al Arco', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .2, f'{remates_arco_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif remates_arco_match[0] == remates_arco_match[1]:
+        ax.text(.05, .2, f'{remates_arco_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .2, f'Remates al Arco', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .2, f'{remates_arco_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .2, f'{remates_arco_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .2, f'Remates al Arco', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .2, f'{remates_arco_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))        
+
+    if red_card_match[0] > red_card_match[1]:
+        ax.text(.05, .1, f'{red_card_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .1, f'Tarjetas Rojas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .1, f'{red_card_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif red_card_match[0] == red_card_match[1]:
+        ax.text(.05, .1, f'{red_card_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .1, f'Tarjetas Rojas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .1, f'{red_card_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .1, f'{red_card_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .1, f'Tarjetas Rojas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .1, f'{red_card_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))        
+
+    if paradas_match[0] > paradas_match[1]:
+        ax.text(.05, .0, f'{paradas_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{homeColor}', boxstyle='round'))
+        ax.text(.5, .0, f'Atajadas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .0, f'{paradas_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    elif paradas_match[0] == paradas_match[1]:
+        ax.text(.05, .0, f'{paradas_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .0, f'Atajadas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .0, f'{paradas_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17)
+    else:
+        ax.text(.05, .0, f'{paradas_match[0]}', ha='left', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.5, .0, f'Atajadas', ha='center', va='center', fontproperties=cuerpo.prop, size=17)
+        ax.text(.95, .0, f'{paradas_match[1]}', ha='right', va='center', fontproperties=cuerpo.prop, size=17, color='white', bbox=dict(facecolor=f'{awayColor}', boxstyle='round'))  
+
+def get_estadisticas_player_of_the_match(ax6, fueras_de_juego_player_match, asistencias_esperadas_player_match, faltas_recibidas_player_match, goles_esperados_player_match, totales_remates_player_match, remates_arco_player_match, faltas_cometidas_player_match, recuperacion_posesion_player_match, despejes_player_match, intercepciones_player_match, pases_claves_player_match, pases_ultimo_tercio_player_match, pases_hacia_atras_player_match, toques_player_match, posesiones_perdidas_player_match, regateado_player_match, nombre):
+    ax6.text(.04, .9, f"Fueras de Juego: {fueras_de_juego_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .8, f"Asistencias Esperadas: {asistencias_esperadas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .7, f"Faltas Recibidas: {faltas_recibidas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .6, f"Goles Esperados: {goles_esperados_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .5, f"Remates Totales: {totales_remates_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .4, f"Remates al Arco: {remates_arco_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .3, f"Faltas Cometidas: {faltas_cometidas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.04, .2, f"Recuperación de Posesión: {recuperacion_posesion_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .9, f"Despejes: {despejes_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .8, f"Intercepciones: {intercepciones_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .7, f"Pases Claves: {pases_claves_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .6, f"Pases Último Tercio: {pases_ultimo_tercio_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .5, f"Pases Hacia Atrás: {pases_hacia_atras_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .4, f"Toques: {toques_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .3, f"Posesiones perdidas: {posesiones_perdidas_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)
+    ax6.text(.6, .2, f"Veces Regateado: {regateado_player_match}", ha='left', va='center', fontproperties=nombre.prop, size=15)      
